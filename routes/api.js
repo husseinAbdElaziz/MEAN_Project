@@ -6,6 +6,13 @@ const User = require('../models/user');
 const db = "mongodb+srv://hussein:hussein@meandb-fdkyf.mongodb.net/eventsdb?retryWrites=true";
 //const db = "mongodb://localhost:27017/eventsdb"
 
+const cors = require('cors');
+
+const app = express();
+app.use(cors({
+    origin:"*"
+}))
+
 mongoose.connect(db, function(err){
     if(err){
         console.error('Error! ' + err)
