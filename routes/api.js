@@ -10,10 +10,11 @@ const cors = require('cors');
 const app = express();
 
 app.use((req , res , next) => {
-  res.header("Access-Control-Allow-Origin" , "*"),
+  res.header("Access-Control-Allow-Origin" , "https://auth-angular.netlify.com"),
   res.header("Access-Control-Headers" , "*")
   if(res.method === "OPTIONS"){
     res.header('Access-Control-Allow-Methods' , "GET , POST, DELETE, PATCH")
+    return res.status(200).json({})
   }
 })
 
