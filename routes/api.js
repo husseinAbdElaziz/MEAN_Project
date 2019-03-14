@@ -7,11 +7,15 @@ const db = "mongodb+srv://hussein:hussein@meandb-fdkyf.mongodb.net/eventsdb?retr
 //const db = "mongodb://localhost:27017/eventsdb"
 
 const cors = require('cors');
-
 const app = express();
-app.use(cors({
-    origin:"*"
-}))
+
+app.use((req , res , next) => {
+  res.header("Access-Control-Allow-Origin" , "*"),
+  res.header("Access-Control-Headers" , "*")
+  if(res.method === "OPTIONS"){
+    res.header('Access-Control-Allow-Methods' , "GET , POST, DELETE, PATCH")
+  }
+})
 
 mongoose.connect(db, function(err){
     if(err){
